@@ -1,0 +1,39 @@
+﻿<UserControl x:Class="UserPanel.Panels.SettingsPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             xmlns:local="clr-namespace:UserPanel.Panels"
+             mc:Ignorable="d"
+             Loaded="UserControl_Loaded"
+             d:DesignHeight="450" d:DesignWidth="800"
+             Background="#01FFFFFF">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="35"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left">
+            <TextBlock Text="Avatar path" FontSize="15" Foreground="White" TextAlignment="Center" VerticalAlignment="Center" Padding="5 0 0 0"/>
+            <TextBox x:Name="avatarPath" BorderThickness="0 0 0 1" Margin="10 0 0 0" Width="200" Background="Transparent" FontSize="13" VerticalContentAlignment="Center" TextAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
+            <Button x:Name="selectBtn" Click="selectBtn_Click" Command="{Binding DataContext.ChangeAvatarCommand, RelativeSource={RelativeSource AncestorType=Window }}" Content="Select" VerticalAlignment="Center" Foreground="White" FontSize="15" Margin="10 0 0 0" Width="100" BorderThickness="0" Style="{StaticResource stdButton}"/>
+            <Button x:Name="delBtn" Click="delBtn_Click" Content="Delete" VerticalAlignment="Center" Foreground="White" FontSize="15" Margin="5 0 0 0" Width="100" BorderThickness="0" Style="{StaticResource stdButton}"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Left">
+            <TextBlock Text="License key" FontSize="15" Foreground="White" TextAlignment="Center" VerticalAlignment="Center" Padding="5 0 0 0"/>
+            <TextBox x:Name="licenseKey" BorderThickness="0 0 0 1" Margin="10 0 0 0" Width="200" Background="Transparent" FontSize="13" VerticalContentAlignment="Center" TextAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
+            <Button x:Name="activateLKey" Click="activateLKey_Click" Content="Activate" Width="100" Foreground="White" FontSize="15" VerticalAlignment="Center" Margin="10 0 0 0" BorderThickness="0" Style="{StaticResource stdButton}"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Left">
+            <Icon:PackIconMaterial x:Name="licenseIcon" Margin="5,0,5,0" Foreground="#00FF49" Kind="CubeOutline" HorizontalAlignment="Center" Style="{StaticResource pagingBtnIcon}"/>
+            <TextBlock x:Name="licenseDate" Text="License expired:" FontSize="15" TextAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

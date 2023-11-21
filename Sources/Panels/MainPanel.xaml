@@ -1,0 +1,59 @@
+﻿<UserControl x:Class="UserPanel.Panels.MainPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:UserPanel.Panels"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+             Loaded="UserControl_Loaded">
+
+    <Border BorderThickness="0">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="35"/>
+            </Grid.RowDefinitions>
+
+            <ScrollViewer VerticalScrollBarVisibility="Auto" PreviewMouseWheel="ScrollViewer_PreviewMouseWheel">
+                <DataGrid HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Style="{DynamicResource DataGridStyle1}" CellStyle="{DynamicResource DataGridCellStyle1}" ColumnHeaderStyle="{DynamicResource DataGridColumnHeaderStyle1}" ColumnHeaderHeight="25" Grid.Row="0" x:Name="userDataGrid">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding Path= IP}" Header="IP" CanUserResize="False" IsReadOnly="True" Width="*"/>
+                        <DataGridTextColumn Binding="{Binding Path= OS}" Header="OS" CanUserResize="False" IsReadOnly="True" Width="*"/>
+                        <DataGridTextColumn Binding="{Binding Path= UserName}" Header="USERNAME" CanUserResize="False" IsReadOnly="True" Width="*"/>
+                        <DataGridTextColumn Binding="{Binding Path= AV}" Header="AV" CanUserResize="False" IsReadOnly="True" Width="*"/>
+                    </DataGrid.Columns>
+
+                    <DataGrid.Resources>
+                        <ContextMenu x:Key="Context" Style="{StaticResource contextMenu}">
+                            <ContextMenu.Template>
+                                <ControlTemplate>
+                                    <Border CornerRadius="5" Background="#1D1D1D" BorderThickness="0">
+                                        <StackPanel>
+                                            <MenuItem x:Name="userConnect"  Header="Connect" Click="userConnect_Click"/>
+                                            <MenuItem x:Name="fileExplorer" Header="File Explorer" Click="fileExplorer_Click"/>
+                                            <MenuItem x:Name="userTools" Header="Tools" Click="userTools_Click"/>
+                                        </StackPanel>
+                                    </Border>
+                                </ControlTemplate>
+                            </ContextMenu.Template>
+                        </ContextMenu>
+                    </DataGrid.Resources>
+
+                    <DataGrid.RowStyle>
+                        <Style TargetType="DataGridRow" BasedOn="{StaticResource DataGridRowStyle1}">
+                            <Setter Property="ContextMenu" Value="{StaticResource Context}" />
+                        </Style>
+                    </DataGrid.RowStyle>
+                </DataGrid>
+            </ScrollViewer>
+
+            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Left">
+                <Icon:PackIconMaterial Margin="5,0,5,0" Foreground="#00FF49" Kind="Circle" HorizontalAlignment="Center" Style="{StaticResource pagingBtnIcon}"/>
+                <TextBlock FontSize="15" TextAlignment="Center" VerticalAlignment="Center" Text="Online:" Foreground="White"/>
+                <TextBlock FontSize="15" HorizontalAlignment="Center" TextAlignment="Center" VerticalAlignment="Center" Margin="5" Text="{Binding ElementName=userDataGrid, Path=Items.Count}" Foreground="White"/>
+            </StackPanel>
+        </Grid>
+    </Border>
+</UserControl>

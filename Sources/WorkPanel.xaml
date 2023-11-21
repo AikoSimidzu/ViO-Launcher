@@ -1,0 +1,90 @@
+﻿<Window x:Class="UserPanel.WorkPanel"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UserPanel"
+        xmlns:viewModel="clr-namespace:UserPanel.FrontEndB.MVVM.ViewModel"
+        xmlns:ext="clr-namespace:Nukepayload2.UI.Xaml;assembly=Nukepayload2.UI.Win32"
+        mc:Ignorable="d"
+        Title="WorkPanel" Height="600" Width="1200"
+        WindowStyle="None" 
+        WindowStartupLocation="CenterScreen"
+        AllowsTransparency="True"
+        Loaded="Window_Loaded"
+        MouseDown="Window_MouseDown"
+        Background="#01FFFFFF"
+        ResizeMode="NoResize"
+        ext:WindowCompositionProperties.IsBlurred="True">
+
+    <Window.DataContext>
+        <viewModel:MainViewModel/>
+    </Window.DataContext>
+
+    <Border CornerRadius="10" BorderBrush="White" BorderThickness="2" Background="#01FFFFFF">
+        <Grid Margin="-16,-2,0,2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="30"/>
+                <ColumnDefinition Width="30"/>
+                <ColumnDefinition Width="30"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="ViO Panel" Foreground="White" FontSize="20" Grid.Column="0" VerticalAlignment="Center" Margin="25,0,0,0" Height="27"/>
+
+            <Button x:Name="btnMinimize" BorderThickness="0" Content="-" Width="25" Foreground="White" Style="{StaticResource stdButton}" VerticalContentAlignment="Center" FontSize="20" Grid.Column="1" Click="btnMinimize_Click"/>
+
+            <Button x:Name="btnMaximize" BorderThickness="0" Content="O" Width="25" Foreground="White" Style="{StaticResource stdButton}" VerticalContentAlignment="Center" FontSize="20" Grid.Column="2" Click="btnMaximize_Click"/>
+
+            <Button x:Name="btnClose" BorderThickness="0" Content="X" Width="25" Foreground="White" Style="{StaticResource stdButton}" VerticalContentAlignment="Center" FontSize="20" Grid.Column="3" Click="btnClose_Click"/>
+
+            <Grid x:Name="jstGrid" Grid.Row="1" Margin="15,0,13,0" Width="Auto" Grid.ColumnSpan="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="220"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Border x:Name="borderPanel" Background="#01FFFFFF" Grid.Column="0" BorderBrush="White" BorderThickness="2" CornerRadius="10" Height="{Binding ElementName=jstGrid, Path=Height}" Width="220" Margin="0,0,0,-4">
+                    <Grid>
+                        <StackPanel>
+                            <Ellipse x:Name="cir" Height="200" Width="200" Margin="8,10,8,349">
+                                <Ellipse.Fill>
+                                    <ImageBrush x:Name="usprof" Stretch="UniformToFill" ImageSource="{Binding CurrentAvatar}"/>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                            <TextBox x:Name="username" Text="User Name" Foreground="White" FontSize="15" BorderThickness="0,0,0,1" Margin="2,-620,-2,0" Padding="-10,15,0,0" Height="50" TextAlignment="Center" Background="#01FFFFFF" IsReadOnly="True" IsEnabled="True"/>
+
+                            <RadioButton x:Name="mainRButton" IsChecked="True" Style="{StaticResource menuRadButton}" Command="{Binding HomeViewCommand}" Margin="0,-510,0,0">
+                                <StackPanel>
+                                    <TextBlock Style="{StaticResource menuButtonText}" Text="Main" TextAlignment="Center" Width="215" Padding="0,15,0,0" Margin="-20,0,0,0"/>
+                                </StackPanel>
+                            </RadioButton>
+
+                            <RadioButton Style="{StaticResource menuRadButton}" Command="{Binding ToolsViewCommand}" Margin="0,-405,0,0">
+                                <StackPanel>
+                                    <TextBlock Style="{StaticResource menuButtonText}" Text="Tools" TextAlignment="Center" Width="215" Padding="0,15,0,0" Margin="-20,0,0,0"/>
+                                </StackPanel>
+                            </RadioButton>
+
+                            <RadioButton Style="{StaticResource menuRadButton}" Command="{Binding SettingsViewCommand}" Margin="0,-300,0,0">
+                                <StackPanel>
+                                    <TextBlock Style="{StaticResource menuButtonText}" Text="Settings" TextAlignment="Center" Width="215" Padding="0,15,0,0" Margin="-20,0,0,0"/>
+                                </StackPanel>
+                            </RadioButton>
+                        </StackPanel>
+                        
+                    </Grid>
+                </Border>
+
+                <Border Background="#01FFFFFF" Grid.Column="1" BorderBrush="White" BorderThickness="2" CornerRadius="10" Height="{Binding ElementName=jstGrid, Path=Height}" Margin="0,0,0,-4">
+                    <ContentControl Margin="8" Content="{Binding CurrentView}"/>
+                </Border>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

@@ -1,0 +1,42 @@
+﻿<Window x:Class="UserPanel.Panels.MessageMenu.Message"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UserPanel.Panels.MessageMenu"
+        xmlns:ext="clr-namespace:Nukepayload2.UI.Xaml;assembly=Nukepayload2.UI.Win32"
+        mc:Ignorable="d"
+        Title="Message" Height="150" Width="350"
+        WindowStartupLocation="CenterScreen"
+        AllowsTransparency="True"
+        ResizeMode="CanResize"
+        Background="#01FFFFFF"
+        WindowStyle="None"
+        ext:WindowCompositionProperties.IsBlurred="True"
+        Loaded="Window_Loaded"
+        MouseDown="Window_MouseDown">
+
+    <Border CornerRadius="10" BorderBrush="White" BorderThickness="2" Background="#01FFFFFF">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="35"/>
+                <RowDefinition Height="10"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="35"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="Message" Foreground="White" Margin="10 0 0 0" FontSize="20" Grid.Column="0"/>
+            <Button x:Name="btnClose" BorderThickness="0" Content="X" Width="25" Foreground="White" Style="{StaticResource stdButton}" VerticalContentAlignment="Center" FontSize="20" Grid.Column="2" Click="btnClose_Click"/>
+
+            <TextBlock x:Name="MessageBlock" Text="This is message" TextWrapping="Wrap" Foreground="White" Margin="10 10 0 0" FontSize="15" Grid.Row="1"/>
+
+            <Button x:Name="OK" Width="100" Content="OK" Foreground="White" Style="{StaticResource stdButton}" VerticalContentAlignment="Center" FontSize="20" Grid.Row="2" HorizontalAlignment="Left" Margin="236,0,0,0" Grid.ColumnSpan="2" Click="OK_Click"/>
+            <Button x:Name="Cancle" Width="100" Content="Cancle" Foreground="White" Style="{StaticResource stdButton}" VerticalContentAlignment="Center" FontSize="20" Grid.Row="2" HorizontalAlignment="Left" Margin="123,0,0,0" Click="Cancle_Click"/>
+        </Grid>
+    </Border>
+</Window>
