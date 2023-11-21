@@ -12,3 +12,7 @@ This is an extensive network administration suite similar to AnyDesk and TeamVie
 3. Communication with the server (getting local time, getting a list of connected users)
 4. Profile setup and other interface
 5. Local logging
+
+![alt text](Screensots/1.png "Picture")
+![alt text](Screensots/2.png "Picture")
+![alt text](Screensots/3.png "Picture")
