@@ -1,6 +1,10 @@
 # ViO-Launcher
 This is a launcher for my project which is currently in development.
 
+Telegram channel: https://t.me/ProjectViO
+
+Telegram chat: https://t.me/+yj3B8W00CHhjNmMy
+
 ![alt text](Sources/Resources/mg.png "Logo")
 
 # What it is?
